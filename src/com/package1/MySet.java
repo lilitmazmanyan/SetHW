@@ -1,36 +1,37 @@
 package com.package1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class MySet<T> {
+class MySet<T extends Comparable<T>> {
     List<T> list = new ArrayList<>();
 
-    public void add(T t) {
+    void add(T t) {
         if (list.contains(t)) {
             return;
         }
         list.add(t);
-//        Collections.sort(list);
+        Collections.sort(list);
     }
 
-    public T remove(T t) {
+    T remove(T t) {
         if (!list.contains(t)) {
             throw new NullPointerException("There is no such object in MySet ");
         }
         list.remove(t);
-        return t;
+        return (T) ("Removed element is: " + t);
     }
 
-    public int getSize() {
+    int getSize() {
         return list.size();
     }
 
-    public boolean contains(T t) {
+    boolean contains(T t) {
         return list.indexOf(t) >= 0;
     }
 
-    public void print(MySet<T> set) {
+    void print(MySet<T> set) {
         System.out.println(set.list);
     }
 
