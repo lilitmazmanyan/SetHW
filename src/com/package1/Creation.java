@@ -6,6 +6,8 @@ import com.objects.Glass;
 import com.objects.Student;
 
 class Creation {
+
+    //Creating some instances of Coffee class to test whether print and add methods work or not
     void CoffeeTesting() {
         Coffee forMe = new Coffee(CoffeeTypes.LATTE);
         forMe.setSugar(2);
@@ -26,6 +28,7 @@ class Creation {
         coffeeSet.print(coffeeSet);
     }
 
+    //Creating some instances of Student class to check the add and size methods function correct
     void StudentTesting() {
         Student sevak = new Student("Paruyr Sevak", 12);
         Student tumanyan = new Student("Hovhannes Tumanyan", 21);
@@ -52,6 +55,7 @@ class Creation {
 
     }
 
+    //Creating some instances of Glass type to see if add, remove and print methods operate correctly
     void GlassesTesting() {
         Glass forWine = new Glass("For Wine", 5);
         Glass forShortSighteds = new Glass("For Short Sighteds", 10);
