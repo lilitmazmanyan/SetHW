@@ -1,5 +1,6 @@
 package com.package1;
 
+import com.LinkedList.MyLinkedList;
 import com.objects.Coffee;
 import com.objects.CoffeeTypes;
 import com.objects.Glass;
@@ -11,6 +12,7 @@ class Creation {
     void CoffeeTesting() {
         Coffee forMe = new Coffee(CoffeeTypes.LATTE);
         forMe.setSugar(2);
+
         Coffee forYou = new Coffee(CoffeeTypes.AMERICANO);
         forYou.setSugar(3);
         Coffee forHer = new Coffee(CoffeeTypes.CAPPUCCINO);
@@ -18,14 +20,20 @@ class Creation {
         Coffee forHim = new Coffee(CoffeeTypes.FRAPPE);
         Coffee forUs = new Coffee(CoffeeTypes.MOCHA);
 
-        MySet<Coffee> coffeeSet = new MySet<>();
-        coffeeSet.add(forMe);
+        MyLinkedList<Coffee> coffeeSet = new MyLinkedList<>();
+//        coffeeSet.add(forMe);
         coffeeSet.add(forYou);
-        coffeeSet.add(forHer);
+//        coffeeSet.add(forYou);
+//        coffeeSet.add(forHer);
         coffeeSet.add(forHim);
         coffeeSet.add(forUs);
+//        coffeeSet.add(forYou);
+        coffeeSet.add(forHer);
+        coffeeSet.add(forMe);
+        coffeeSet.add(forMe);
 
-        coffeeSet.print(coffeeSet);
+        coffeeSet.print();
+        System.out.println(coffeeSet.getSize());
     }
 
     //Creating some instances of Student class to check the add and size methods function correct
@@ -38,7 +46,7 @@ class Creation {
         Student charenc = new Student("Eghishe Charenc", 17);
         Student demirchyan = new Student("Derenik Demirchyan", 17);
 
-        MySet<Student> writersSet = new MySet<>();
+        MyLinkedList<Student> writersSet = new MyLinkedList<>();
 
         writersSet.add(sevak);
         writersSet.add(tumanyan);
@@ -62,7 +70,7 @@ class Creation {
         Glass forAWindow = new Glass("For Windows", 20);
         Glass forTableTop = new Glass("For Table Top", 22);
 
-        MySet<Glass> glassesSet = new MySet<>();
+        MyLinkedList<Glass> glassesSet = new MyLinkedList<>();
         glassesSet.add(forWine);
         glassesSet.add(forShortSighteds);
         glassesSet.add(forShortSighteds);
@@ -76,4 +84,6 @@ class Creation {
         System.out.println("Printing the size after one removal: " + glassesSet.getSize());
 
     }
+
+
 }
