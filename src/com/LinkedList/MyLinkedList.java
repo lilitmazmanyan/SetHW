@@ -1,65 +1,90 @@
 package com.LinkedList;
 
 public class MyLinkedList<T extends Comparable<T>> {
-    private Node<T> first;
-    private Node<T> last;
+    Node<T> first;
+    Node<T> last;
     private int size = 0;
 
     //The following method adds given element to set and than sorts that set by class's Comparable
-    public boolean add(T t) {
 
-        Node newNode = new Node(null, t, null);
+    //Comparator doesnt worl
+    public boolean add(T t) {
+        Node<T> nodeToBeAdded = new Node<>(t, null);
 
         if (contains(t)) {
             return false;
         }
         if (first == null) {
-            first = newNode;
-            first.setNext(last);
+            first = nodeToBeAdded;
+            nodeToBeAdded.next = null;
+            last = first;
             size++;
             return true;
-        }
-        Node current = first;
-        boolean eghela = false;
-        while (current != null) {
-            if (current.data.compareTo(t) > 0) {
-                //piti current-i previous-i poxaren mcnenq ed zibily
-                if (current == first) {
-                    newNode.setNext(first);
-                    first.setPrevious(newNode);
-                    first = newNode;
+        } else {
+            Boolean isFound = false;
+            Node<T> current = first;
+            int counter = 0;
+
+            while (!isFound) {
+                //Ete piti avelacnenc skzbum
+                if (current.data.compareTo(t) > 0) {
+                    counter++;
+                    isFound = true;
                 }
-                current.previous.setNext(newNode);
-                newNode.setPrevious(current.getPrevious());
-                current.setPrevious(newNode);
-                newNode.setNext(current);
-                eghela = true;
                 break;
             }
-            current = current.getNext();
-        }
-        if (eghela == false) {
-            newNode.setPrevious(last);
-            last = newNode;
-//            last.getPrevious().setNext(newNode);
-            last.setNext(null);
+            if (counter == getSize()) {
+                insertToEnd(t, nodeToBeAdded);
+            } else {
+                insertInto(t, counter - 1);
+            }
         }
 
         size++;
         return true;
     }
 
+    private void insertInto(T t, int indexToAddTo) {
+        Node<T> curr = first;
+        Node<T> nodeToAdd = new Node<>(t, null);
+        for (int i = 0; i < indexToAddTo; i++) {
+            curr = curr.next;
+        }
+        nodeToAdd.next = curr.next;
+        curr.next = nodeToAdd;
+
+    }
+
+    private void insertToEnd(T t, Node<T> nodeToBeAdded) {
+        Node<T> curr = first;
+        for (int i = 0; i < getSize() - 1; i++) {
+            curr = curr.next;
+        }
+        curr.setNext(nodeToBeAdded);
+        nodeToBeAdded.next = null;
+        last = nodeToBeAdded;
+
+    }
+
+
     // The following method removes given element from set
     public boolean remove(T t) {
-        if (first == null) {
+        if (contains(t) == false) {
             return false;
         } else {
-            for (Node c = first; c != last; c = c.next) {
-                if (c.equals(t)) {
-                    c.previous.setNext(c.next);
-                    c.next.setPrevious(c.previous);
+            Node<T> curr = first;
+
+            if (t.equals(first)) {
+                first = first.next;
+            } else
+                while (curr != last) {
+                    if (curr.data == t) {
+                        curr.next = curr.next.next;
+                        break;
+                    }
+                    curr = curr.next;
                 }
-            }
+
             size--;
             return true;
         }
@@ -81,11 +106,25 @@ public class MyLinkedList<T extends Comparable<T>> {
         return size;
     }
 
-
-    public boolean print() {
-        for (Node current = first; current != null; current = current.getNext()) {
-            System.out.println(current.data);
+    public void print() {
+        for (Node c = first; c != null; c = c.next) {
+            System.out.println(c.data);
         }
-        return true;
     }
 }
+
+class Node<T extends Comparable<T>> {
+    public void setNext(Node<T> next) {
+        this.next = next;
+    }
+
+    Node<T> next;
+    T data;
+
+    Node(T data, Node<T> next) {
+        this.data = data;
+        this.next = next;
+    }
+}
+
+

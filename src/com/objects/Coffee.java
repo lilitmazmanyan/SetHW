@@ -20,7 +20,7 @@ public class Coffee implements Comparable<Coffee> {
 
     @Override
     public int compareTo(Coffee o) {
-        return this.coffeeType.compareTo(o.coffeeType);
+        return this.sugar - o.sugar;
     }
 
     @Override
@@ -35,9 +35,9 @@ public class Coffee implements Comparable<Coffee> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Coffee coffee = (Coffee) o;
-        return sugar == coffee.sugar &&
-                coffeeType.equals(coffee.coffeeType);
+        return coffeeType.equals(coffee.coffeeType);
     }
+
 
     @Override
     public int hashCode() {

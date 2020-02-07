@@ -8,32 +8,38 @@ import com.objects.Student;
 
 class Creation {
 
-    //Creating some instances of Coffee class to test whether print and add methods work or not
+    /**
+     * Creating some instances of Coffee class to test whether print and add methods work or not
+     */
+
     void CoffeeTesting() {
         Coffee forMe = new Coffee(CoffeeTypes.LATTE);
-        forMe.setSugar(2);
-
+        forMe.setSugar(3);
         Coffee forYou = new Coffee(CoffeeTypes.AMERICANO);
-        forYou.setSugar(3);
+        forYou.setSugar(1);
         Coffee forHer = new Coffee(CoffeeTypes.CAPPUCCINO);
-        forHer.setSugar(1);
+        forHer.setSugar(2);
         Coffee forHim = new Coffee(CoffeeTypes.FRAPPE);
+        forHim.setSugar(5);
         Coffee forUs = new Coffee(CoffeeTypes.MOCHA);
 
         MyLinkedList<Coffee> coffeeSet = new MyLinkedList<>();
-//        coffeeSet.add(forMe);
-        coffeeSet.add(forYou);
-//        coffeeSet.add(forYou);
-//        coffeeSet.add(forHer);
-        coffeeSet.add(forHim);
-        coffeeSet.add(forUs);
-//        coffeeSet.add(forYou);
-        coffeeSet.add(forHer);
-        coffeeSet.add(forMe);
-        coffeeSet.add(forMe);
 
+        System.out.println(coffeeSet.getSize());
+
+        coffeeSet.add(forMe);
+        coffeeSet.add(forHer);
+        coffeeSet.add(forYou);
+//        coffeeSet.add(forHim);
+//        coffeeSet.add(forUs);
         coffeeSet.print();
         System.out.println(coffeeSet.getSize());
+
+        System.out.println(coffeeSet.remove(forHer));
+        coffeeSet.print();
+
+        System.out.println(coffeeSet.getSize());
+
     }
 
     //Creating some instances of Student class to check the add and size methods function correct

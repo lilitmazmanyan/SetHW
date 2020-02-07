@@ -6,8 +6,6 @@ package com.package1;
  *
  * @author Lilit Mazmanyan
  * @version 1.0
- * @compamny EPAM
- * @Position Student for now
  * @since 04.01.2020
  */
 
@@ -17,10 +15,7 @@ public class Main {
         //Because access of non-static methods from static field is forbidden
         Creation c = new Creation();
         c.CoffeeTesting();
-        System.out.println("------------------------Break-here------------------------\n");
-        c.StudentTesting();
-        System.out.println("------------------------Break-here------------------------\n");
-        c.GlassesTesting();
+//        System.out.println("------------------------Break-here------------------------\n");
 
     }
 
